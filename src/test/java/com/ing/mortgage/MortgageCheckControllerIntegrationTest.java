@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class MortgageCheckControllerIntegrationTest {
+class MortgageCheckControllerIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -27,7 +27,7 @@ public class MortgageCheckControllerIntegrationTest {
     private ObjectMapper objectMapper;
 
     @Test
-    public void testPerformMortgageCheck_ValidRequest_ReturnFisibilityAndMonthlyCost() throws Exception {
+    void testPerformMortgageCheck_ValidRequest_ReturnFisebilityAndMonthlyCost() throws Exception {
         MortgageCheckRequestDTO requestDTO = MortgageCheckRequestDTO.builder()
                 .income(BigDecimal.valueOf(2000000))
                 .maturityPeriod(10)
@@ -47,7 +47,7 @@ public class MortgageCheckControllerIntegrationTest {
     }
 
     @Test
-    public void testPerformMortgageCheck_InvalidRequest_ThrowsNotValidInterestRateException() throws Exception {
+    void testPerformMortgageCheck_InvalidRequest_ThrowsNotValidInterestRateException() throws Exception {
         //When
         MortgageCheckRequestDTO requestDTO = MortgageCheckRequestDTO.builder()
                 .income(BigDecimal.valueOf(2000))
@@ -68,7 +68,7 @@ public class MortgageCheckControllerIntegrationTest {
     }
 
     @Test
-    public void testPerformMortgageCheck_ValidRequest_NotFeasable() throws Exception {
+    void testPerformMortgageCheck_ValidRequest_NotFeasable() throws Exception {
         MortgageCheckRequestDTO requestDTO = MortgageCheckRequestDTO.builder()
                 .income(BigDecimal.valueOf(3000))
                 .maturityPeriod(10)
@@ -88,9 +88,7 @@ public class MortgageCheckControllerIntegrationTest {
     }
 
     @Test
-    public void testGetInterestRates_ValidRequest_ReturnsAllInterestRates() throws Exception {
-
-
+    void testGetInterestRates_ValidRequest_ReturnsAllInterestRates() throws Exception {
         // Perform GET request to "/api/v1/interest-rates"
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/interest-rates"))
                 .andExpect(MockMvcResultMatchers.status().isOk())

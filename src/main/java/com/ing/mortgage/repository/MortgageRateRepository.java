@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface MortgageRateRepository {
-     void saveAll(List<MortgageRate> mortgageRates);
+    void saveAll(List<MortgageRate> mortgageRates);
 
-     List<MortgageRate> findAll();
+    List<MortgageRate> findAll();
 
-     Optional<Double> findInterestRateByMaturityPeriod(int maturityPeriod);
+    Optional<Double> findInterestRateByMaturityPeriod(int maturityPeriod);
 }

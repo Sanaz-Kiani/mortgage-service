@@ -16,7 +16,7 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(InterestRateController.class)
-public class InterestRateControllerTest {
+class InterestRateControllerTest {
     @Autowired
     private MockMvc mockMvc;
     @MockBean
@@ -24,7 +24,7 @@ public class InterestRateControllerTest {
 
 
     @Test
-    public void testGetInterestRates_ValidRequest_ShouldReturnListOfInterestRates() throws Exception {
+    void testGetInterestRates_ValidRequest_ShouldReturnListOfInterestRates() throws Exception {
         // Given
         List<Double> interestRates = Arrays.asList(3.5, 4.0, 4.5);
         when(interestRateService.getAllInterestRates()).thenReturn(interestRates);

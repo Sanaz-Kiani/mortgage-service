@@ -23,7 +23,7 @@ public class MortgageCheckController {
 
     // I assume even if the mortgage is not feasible still ,the monthly costs should be returned
     @PostMapping
-    @Operation(description="Check if mortgage is feasible and calculate monthly costs")
+    @Operation(description = "Check if mortgage is feasible and calculate monthly costs")
     public ResponseEntity<MortgageCheckResponseDTO> performMortgageCheck(@RequestBody @Valid MortgageCheckRequestDTO requestDTO) {
         MortgageCheckResponseDTO response = mortgageCheckService.performMortgageCheck(requestDTO);
         return ResponseEntity.ok().body(response);

@@ -3,9 +3,7 @@ package com.ing.mortgage.domain;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**

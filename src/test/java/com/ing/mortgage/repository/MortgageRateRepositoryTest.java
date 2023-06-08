@@ -19,6 +19,7 @@ public class MortgageRateRepositoryTest {
     public void setUp() {
         repository = new MortgageRateInMemoryRepository();
     }
+
     @Test
     void saveAll_ShouldAddMortgageRatesToRepository() {
         // Given

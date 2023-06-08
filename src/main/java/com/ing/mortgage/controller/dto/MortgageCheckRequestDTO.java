@@ -1,14 +1,12 @@
 package com.ing.mortgage.controller.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-
-
-import java.math.BigDecimal;
-
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
 import lombok.Builder;
 import lombok.Data;
+
+import java.math.BigDecimal;
 
 @Data
 @Builder

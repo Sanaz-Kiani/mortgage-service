@@ -25,7 +25,7 @@ class InterestRateServiceTest {
 
 
     @Test
-    public void testGetAllInterestRates_ShouldReturnAllInterestRates() {
+    void testGetAllInterestRates_ShouldReturnAllInterestRates() {
         // Given
         List<MortgageRate> mortgageRates = Arrays.asList(
                 new MortgageRate(10, 3.5, LocalDateTime.now()),

@@ -1,7 +1,6 @@
 package com.ing.mortgage.validator.specification;
 
 import com.ing.mortgage.controller.dto.MortgageCheckRequestDTO;
-import com.ing.mortgage.controller.dto.MortgageCheckResponseDTO;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;

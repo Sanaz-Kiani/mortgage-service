@@ -18,7 +18,7 @@ import java.math.BigDecimal;
 @RequiredArgsConstructor
 public class MortgageCheckServiceImpl implements MortgageCheckService {
     private final MortgageRateRepository mortgageRateRepository;
-    Specification<MortgageCheckRequestDTO> mortgageSpecification;
+    private Specification<MortgageCheckRequestDTO> mortgageSpecification;
 
     private boolean validate(MortgageCheckRequestDTO request) {
         mortgageSpecification = new AndSpecification<>(new MortgageIncomeSpecification(), new MortgageHomeValueSpecification());

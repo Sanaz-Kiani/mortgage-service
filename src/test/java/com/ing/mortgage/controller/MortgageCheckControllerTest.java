@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(MortgageCheckController.class)
-public class MortgageCheckControllerTest {
+class MortgageCheckControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -33,7 +33,7 @@ public class MortgageCheckControllerTest {
 
 
     @Test
-    public void PerformMortgageCheck_ValidRequest_ShoudReturnFesaiblityAndMonthlyCost() throws Exception {
+    void PerformMortgageCheck_ValidRequest_ShoudReturnFesaiblityAndMonthlyCost() throws Exception {
 
         //When
         MortgageCheckRequestDTO requestDTO = MortgageCheckRequestDTO.builder()
@@ -61,7 +61,7 @@ public class MortgageCheckControllerTest {
     }
 
     @Test
-    public void testPerformMortgageCheck_InvalidInput_ShouldBeSetBadRequest() throws Exception {
+    void testPerformMortgageCheck_InvalidInput_ShouldBeSetBadRequest() throws Exception {
         //When
         MortgageCheckRequestDTO requestDTO = MortgageCheckRequestDTO.builder()
                 .income(BigDecimal.valueOf(50))
