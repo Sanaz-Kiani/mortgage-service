@@ -1,6 +1,5 @@
 package com.ing.mortgage.validator.specification;
 
-import com.ing.mortgage.controller.dto.MortgageCheckRequestDTO;
 import com.ing.mortgage.domain.MortgageRequest;
 import org.junit.jupiter.api.Test;
 
