@@ -3,7 +3,9 @@ package com.ing.mortgage.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ing.mortgage.controller.dto.MortgageCheckRequestDTO;
 import com.ing.mortgage.controller.dto.MortgageCheckResponseDTO;
-import com.ing.mortgage.service.MortgageCheckServiceImpl;
+import com.ing.mortgage.domain.MortgageRequest;
+import com.ing.mortgage.service.MortgageCalculatorServiceImpl;
+import com.ing.mortgage.service.MortgageFeasibilityServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -29,13 +31,16 @@ class MortgageCheckControllerTest {
     private ObjectMapper objectMapper;
 
     @MockBean
-    private MortgageCheckServiceImpl mortgageCheckService;
+    private MortgageFeasibilityServiceImpl mortgageFeasibilityService;
+
+    @MockBean
+    private MortgageCalculatorServiceImpl mortgageCalculatorService;
 
 
     @Test
     void PerformMortgageCheck_ValidRequest_ShoudReturnFesaiblityAndMonthlyCost() throws Exception {
 
-        //When
+        //Given
         MortgageCheckRequestDTO requestDTO = MortgageCheckRequestDTO.builder()
                 .income(BigDecimal.valueOf(2000))
                 .maturityPeriod(12)
@@ -49,7 +54,9 @@ class MortgageCheckControllerTest {
                 .monthlyCosts(BigDecimal.valueOf(1500))
                 .feasible(true).build();
 
-        when(mortgageCheckService.performMortgageCheck(any(MortgageCheckRequestDTO.class))).thenReturn(responseDTO);
+        when(mortgageFeasibilityService.validateMortgage(any(MortgageRequest.class))).thenReturn(true);
+        when(mortgageCalculatorService.calculateMonthlyCost(any(MortgageRequest.class))).thenReturn(BigDecimal.valueOf(1500));
+
         //Having
         mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/mortgage-check")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -62,7 +69,7 @@ class MortgageCheckControllerTest {
 
     @Test
     void testPerformMortgageCheck_InvalidInput_ShouldBeSetBadRequest() throws Exception {
-        //When
+        //Given
         MortgageCheckRequestDTO requestDTO = MortgageCheckRequestDTO.builder()
                 .income(BigDecimal.valueOf(50))
                 .maturityPeriod(12)

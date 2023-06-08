@@ -1,6 +1,6 @@
 package com.ing.mortgage.validator.specification;
 
-import com.ing.mortgage.controller.dto.MortgageCheckRequestDTO;
+import com.ing.mortgage.domain.MortgageRequest;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -16,7 +16,7 @@ class MortgageIncomeSpecificationTest {
         // When
         BigDecimal loanValue = BigDecimal.valueOf(200000);
         BigDecimal income = BigDecimal.valueOf(60000); // Max income of 4 times the loan value
-        MortgageCheckRequestDTO request = MortgageCheckRequestDTO.builder()
+        MortgageRequest request = MortgageRequest.builder()
                 .loanValue(loanValue)
                 .income(income)
                 .build();
@@ -33,9 +33,9 @@ class MortgageIncomeSpecificationTest {
     @Test
     void isSatisfiedBy_LoanValueGreaterThanMaxMortgageAmount_ReturnsFalse() {
         // When
-        BigDecimal loanValue = BigDecimal.valueOf(300000);
-        BigDecimal income = BigDecimal.valueOf(60000); // Max income of 4 times the loan value
-        MortgageCheckRequestDTO request = MortgageCheckRequestDTO.builder()
+        BigDecimal loanValue = BigDecimal.valueOf(10000);
+        BigDecimal income = BigDecimal.valueOf(2000);
+        MortgageRequest request = MortgageRequest.builder()
                 .loanValue(loanValue)
                 .income(income)
                 .build();

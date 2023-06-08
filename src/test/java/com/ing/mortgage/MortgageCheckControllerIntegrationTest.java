@@ -27,14 +27,13 @@ class MortgageCheckControllerIntegrationTest {
     private ObjectMapper objectMapper;
 
     @Test
-    void testPerformMortgageCheck_ValidRequest_ReturnFisebilityAndMonthlyCost() throws Exception {
+    void testPerformMortgageCheck_ValidRequest_ReturnFeasibilityAndMonthlyCost() throws Exception {
         MortgageCheckRequestDTO requestDTO = MortgageCheckRequestDTO.builder()
                 .income(BigDecimal.valueOf(2000000))
                 .maturityPeriod(10)
                 .loanValue(BigDecimal.valueOf(200000))
                 .homeValue(BigDecimal.valueOf(300000))
                 .build();
-
 
         String requestBody = objectMapper.writeValueAsString(requestDTO);
 
@@ -43,12 +42,12 @@ class MortgageCheckControllerIntegrationTest {
                         .content(requestBody))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.feasible").value(true))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.monthlyCosts").value(84000.0));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.monthlyCosts").value(840.0));
     }
 
     @Test
     void testPerformMortgageCheck_InvalidRequest_ThrowsNotValidInterestRateException() throws Exception {
-        //When
+        //Given
         MortgageCheckRequestDTO requestDTO = MortgageCheckRequestDTO.builder()
                 .income(BigDecimal.valueOf(2000))
                 .maturityPeriod(12)
@@ -76,7 +75,6 @@ class MortgageCheckControllerIntegrationTest {
                 .homeValue(BigDecimal.valueOf(300000))
                 .build();
 
-
         String requestBody = objectMapper.writeValueAsString(requestDTO);
 
         mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/mortgage-check")
@@ -84,7 +82,7 @@ class MortgageCheckControllerIntegrationTest {
                         .content(requestBody))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.feasible").value(false))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.monthlyCosts").value(84000.0));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.monthlyCosts").value(840.0));
     }
 
     @Test

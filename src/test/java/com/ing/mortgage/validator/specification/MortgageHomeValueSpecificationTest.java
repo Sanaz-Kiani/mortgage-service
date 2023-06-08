@@ -1,6 +1,7 @@
 package com.ing.mortgage.validator.specification;
 
 import com.ing.mortgage.controller.dto.MortgageCheckRequestDTO;
+import com.ing.mortgage.domain.MortgageRequest;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -13,7 +14,7 @@ class MortgageHomeValueSpecificationTest {
     @Test
     void isSatisfiedBy_LoanValueLessThanOrEqualToHomeValue_ReturnsTrue() {
         // When
-        MortgageCheckRequestDTO request = MortgageCheckRequestDTO.builder().
+        MortgageRequest request = MortgageRequest.builder().
                 loanValue(BigDecimal.valueOf(200000))
                 .homeValue(BigDecimal.valueOf(300000))
                 .build();
@@ -27,7 +28,7 @@ class MortgageHomeValueSpecificationTest {
     @Test
     void isSatisfiedBy_LoanValueGreaterThanHomeValue_ReturnsFalse() {
         // When
-        MortgageCheckRequestDTO request = MortgageCheckRequestDTO.builder().loanValue(BigDecimal.valueOf(300000)).homeValue(BigDecimal.valueOf(200000)).build();
+        MortgageRequest request = MortgageRequest.builder().loanValue(BigDecimal.valueOf(300000)).homeValue(BigDecimal.valueOf(200000)).build();
 
         MortgageHomeValueSpecification specification = new MortgageHomeValueSpecification();
 

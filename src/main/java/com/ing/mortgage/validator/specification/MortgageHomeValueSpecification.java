@@ -1,6 +1,6 @@
 package com.ing.mortgage.validator.specification;
 
-import com.ing.mortgage.controller.dto.MortgageCheckRequestDTO;
+import com.ing.mortgage.domain.MortgageRequest;
 import org.springframework.stereotype.Component;
 
 /**
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  * It implements the Specification interface for MortgageRequest.
  */
 @Component
-public class MortgageHomeValueSpecification implements Specification<MortgageCheckRequestDTO> {
+public class MortgageHomeValueSpecification implements Specification<MortgageRequest> {
 
     /**
      * Checks whether the loan value is less than or equal to the home value of the mortgage check request.
@@ -17,7 +17,7 @@ public class MortgageHomeValueSpecification implements Specification<MortgageChe
      * @return true if the loan value is less than or equal to the home value, false otherwise
      */
     @Override
-    public boolean isSatisfiedBy(MortgageCheckRequestDTO request) {
+    public boolean isSatisfiedBy(MortgageRequest request) {
         return request.getLoanValue().compareTo(request.getHomeValue()) <= 0;
     }
 }

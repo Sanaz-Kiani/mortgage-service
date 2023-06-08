@@ -23,7 +23,7 @@ public class MortgageCalculator {
             throw new IllegalArgumentException("Maturity period cannot be 0");
         }
         // Sample formula for calculating monthly cost
-        return loanAmount.multiply(BigDecimal.valueOf(interestRate))
+        return loanAmount.multiply(BigDecimal.valueOf(interestRate/100))
                 .divide(BigDecimal.valueOf(maturityPeriod));
     }
 }

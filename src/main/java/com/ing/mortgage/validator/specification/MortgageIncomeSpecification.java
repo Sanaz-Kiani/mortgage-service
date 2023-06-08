@@ -1,6 +1,6 @@
 package com.ing.mortgage.validator.specification;
 
-import com.ing.mortgage.controller.dto.MortgageCheckRequestDTO;
+import com.ing.mortgage.domain.MortgageRequest;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  * It implements the Specification interface for MortgageRequest.
  */
 @Component
-public class MortgageIncomeSpecification implements Specification<MortgageCheckRequestDTO> {
+public class MortgageIncomeSpecification implements Specification<MortgageRequest> {
     private static final int MAX_INCOME_MULTIPLIER = 4;
 
     /**
@@ -20,7 +20,7 @@ public class MortgageIncomeSpecification implements Specification<MortgageCheckR
      * @return true if the loan value is less than or equal to the mortgage amount based on the income, false otherwise
      */
     @Override
-    public boolean isSatisfiedBy(MortgageCheckRequestDTO request) {
+    public boolean isSatisfiedBy(MortgageRequest request) {
         BigDecimal mortgageAmount = request.getIncome().multiply(BigDecimal.valueOf(MAX_INCOME_MULTIPLIER));
         return request.getLoanValue().compareTo(mortgageAmount) <= 0;
     }
