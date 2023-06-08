@@ -26,7 +26,6 @@ public class MortgageCheckController {
     private final MortgageFeasibilityService mortgageCheckService;
     private final MortgageCalculatorServiceImpl mortgageCalculatorService;
 
-
     // I assume even if the mortgage is not feasible still ,the monthly costs should be returned
     @PostMapping
     @Operation(description="Check if mortgage is feasible and calculate monthly costs")
@@ -46,7 +45,6 @@ public class MortgageCheckController {
                 .maturityPeriod(requestDTO.getMaturityPeriod())
                 .build();
     }
-
     private MortgageCheckResponseDTO createMortgageCheckResponse(boolean feasible, BigDecimal monthlyCost) {
         return MortgageCheckResponseDTO.builder()
                 .feasible(feasible)

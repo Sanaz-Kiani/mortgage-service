@@ -1,20 +1,20 @@
 # How to Run
 
 ## Simplest
-You can simply click run buttion in the ide to run the application or use
+You can simply click run button in the Intellij to run the application or use
 ```
 mvn spring-boot:run
 ```
 ## Using Docker Image
 
 ### Build and Run
-Build and Run DockerFile in "mortgage" folder by create an image:
+Build and Run DockerFile in "mortgage" folder by creating an image:
 ```
 docker build -f Dockerfile -t mortgage .
 ```
 ### to see images:
 ```
-docker run -p 8080:8080 mortgage
+docker images
 ```
 ### to run the image:
 ```
@@ -40,7 +40,7 @@ If you have cloned the project source code, you can use Maven to build and run t
 ```
  mvn package
 ```
-### Run the application using Maven
+### and then run:
 ````
-mvn exec:java -Dexec.mainClass="com.ing.mortgage"
+java -jar /target/mortgage-0.0.1-SNAPSHOT.jar
 ````
